@@ -107,7 +107,7 @@ pub fn source_control_panel(
                 .on_scroll(move |rect| {
                     viewport.set(rect);
                 })
-                .on_ensure_visible(move || {
+                .ensure_visible(move || {
                     let cursor = cursor.get();
                     let offset = cursor.offset();
                     let editor = editor.get_untracked();

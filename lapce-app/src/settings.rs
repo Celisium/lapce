@@ -506,7 +506,7 @@ pub fn settings_view(
                 .on_scroll(move |rect| {
                     scroll_pos.set(rect.origin());
                 })
-                .on_ensure_visible(move || ensure_visible.get())
+                .ensure_visible(move || ensure_visible.get())
                 .on_resize(move |rect| {
                     settings_content_size.set(rect.size());
                 })

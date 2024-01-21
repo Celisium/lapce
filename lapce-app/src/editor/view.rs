@@ -425,7 +425,7 @@ pub fn editor_view(
             &config,
         );
 
-        id.update_state(sticky_header_info, false);
+        id.update_state(sticky_header_info);
 
         rev
     });
@@ -2418,7 +2418,7 @@ fn editor_breadcrumbs(
             ))
             .style(|s| s.items_center()),
         )
-        .on_scroll_to(move || {
+        .scroll_to(move || {
             doc.track();
             Some(Point::new(3000.0, 0.0))
         })
@@ -2510,9 +2510,9 @@ fn editor_content(
     .on_move(move |point| {
         window_origin.set(point);
     })
-    .on_scroll_to(move || scroll_to.get().map(|s| s.to_point()))
-    .on_scroll_delta(move || scroll_delta.get())
-    .on_ensure_visible(move || {
+    .scroll_to(move || scroll_to.get().map(|s| s.to_point()))
+    .scroll_delta(move || scroll_delta.get())
+    .ensure_visible(move || {
         let editor = editor.get_untracked();
         let cursor = cursor.get();
         let offset = cursor.offset();
